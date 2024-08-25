@@ -10,11 +10,11 @@ const registryClient = createProfileRegistryClientForProcess(dummyWallet)(
 
 export const profileInfoBatcher = create({
   fetcher: async (ids: ArweaveId[]) => {
-    console.log("profileInfoBatcher", ids);
+    // console.log("profileInfoBatcher", ids); CTODO UNCOMMENT
 
     const profiles = await registryClient.readProfiles(ids);
 
-    console.log({ profiles });
+    // console.log({ profiles }); CTODO UNCOMMENT
     return profiles;
   },
   resolver: keyResolver("ProfileId"),
@@ -23,7 +23,7 @@ export const profileInfoBatcher = create({
 
 export const profileInfoBatcherWallet = create({
   fetcher: async (walletIds: ArweaveAddress[]) => {
-    console.log("profileInfoBatcherWallet", walletIds);
+    // console.log("profileInfoBatcherWallet", walletIds); CTODO UNCOMMENT
 
     const walletProfiles =
       await registryClient.getProfilesByAddresses(walletIds);
@@ -51,9 +51,9 @@ export const profileInfoBatcherWallet = create({
         return { walletId, profile };
       })
       .filter((x) => x.profile !== undefined) as Array<{
-      walletId: ArweaveAddress;
-      profile: ProfileInfo;
-    }>;
+        walletId: ArweaveAddress;
+        profile: ProfileInfo;
+      }>;
 
     return walletsWithProfiles;
   },

@@ -30,7 +30,7 @@ export function Chat({
   newMessages,
   onUserMessageSent,
 }: ChatProps) {
-  console.log({ historyIndex });
+  // console.log({ historyIndex }); CTODO uncomment
   const messageHistoryQuery = useInfiniteQuery({
     queryKey: [
       "messageHistory",
